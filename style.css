@@ -1,0 +1,44 @@
+/* style.css */
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.nav-link {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.nav-link.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.friend-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.friend-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+#chat-messages p {
+  margin: 0.25rem 0;
+  padding: 6px 10px;
+  border-radius: 15px;
+  display: inline-block;
+  max-width: 70%;
+}
+
+#chat-messages .me {
+  background: #3b82f6;
+  color: white;
+  margin-left: auto;
+}
+
+#chat-messages .friend {
+  background: #e5e7eb;
+  color: black;
+  margin-right: auto;
+}
