@@ -281,14 +281,10 @@ function switchAuthMode() {
 }
 if (switchAuthModeButton) switchAuthModeButton.addEventListener("click", switchAuthMode);
 
-// เติม email ที่เคยจำไว้
-window.addEventListener("DOMContentLoaded", () => {
-  const savedEmail = localStorage.getItem("rememberEmail");
-  if (savedEmail) {
-    loginEmailInput.value = savedEmail;
-    rememberMeCheckbox.checked = true;
-  }
-});
+// เพิ่มฟังก์ชันตรวจสอบโดเมน
+function isValidTsuEmail(email) {
+  return email.endsWith("@tsu.ac.th");
+}
 
 // Login
 if (loginForm) {
@@ -297,6 +293,15 @@ if (loginForm) {
     loginErrorDisplay.classList.add("hidden");
     const email = loginEmailInput.value.trim();
     const password = loginPasswordInput.value;
+    
+    // เพิ่มเงื่อนไขการตรวจสอบโดเมน
+    if (!isValidTsuEmail(email)) {
+      const msg = "เข้าสู่ระบบไม่สำเร็จ: กรุณาใช้อีเมลวิทยาลัย @tsu.ac.th";
+      loginErrorDisplay.textContent = msg;
+      loginErrorDisplay.classList.remove("hidden");
+      showCustomModal("System Error", msg);
+      return; // หยุดการทำงานถ้าอีเมลไม่ถูกต้อง
+    }
 
     try {
       await setPersistence(auth, rememberMeCheckbox.checked ? browserLocalPersistence : browserSessionPersistence);
@@ -339,6 +344,15 @@ if (registerForm) {
     const email = registerEmailInput.value.trim();
     const password = registerPasswordInput.value;
     const confirm = registerConfirmPasswordInput.value;
+    
+    // เพิ่มเงื่อนไขการตรวจสอบโดเมน
+    if (!isValidTsuEmail(email)) {
+      const msg = "ลงทะเบียนไม่สำเร็จ: กรุณาใช้อีเมลวิทยาลัย @tsu.ac.th";
+      registerErrorDisplay.textContent = msg;
+      registerErrorDisplay.classList.remove("hidden");
+      showCustomModal("System Error", msg);
+      return; // หยุดการทำงานถ้าอีเมลไม่ถูกต้อง
+    }
 
     if (!username) {
       registerErrorDisplay.textContent = "กรุณาใส่ชื่อผู้ใช้";
@@ -430,7 +444,7 @@ async function loadPageContent(pageName) {
           <label class="block text-sm font-semibold mb-1" for="search-category">หมวดหมู่</label>
           <select id="search-category" class="w-full border rounded-lg px-3 py-2 mb-4">
             <option value="">ทั้งหมด</option>
-            <option>วิชาการ</option><option>werewolf</option><option>UNO</option><option>เกมเศรษฐ๊</option><option>ตลกโยคะ</option><option>แมวระเบิด</option><option>XO</option><option>จิตอาสา</option><option>ออกกำลังกาย</option>
+            <option>วิชาการ</option><option>กีฬา</option><option>บันเทิง</option><option>จิตอาสา</option><option>ออกกำลังกาย</option>
           </select>
           <button id="search-button" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg">ค้นหา</button>
         </div>
@@ -455,7 +469,7 @@ async function loadPageContent(pageName) {
             <label class="block text-sm font-semibold mb-1" for="activity-category">หมวดหมู่</label>
             <select id="activity-category" required class="w-full border rounded-lg px-3 py-2">
               <option value="">เลือกหมวดหมู่</option>
-            <option>วิชาการ</option><option>werewolf</option><option>UNO</option><option>เกมเศรษฐ๊</option><option>ตลกโยคะ</option><option>แมวระเบิด</option><option>XO</option><option>จิตอาสา</option><option>ออกกำลังกาย</option>
+              <option>วิชาการ</option><option>กีฬา</option><option>บันเทิง</option><option>จิตอาสา</option><option>ออกกำลังกาย</option>
             </select>
           </div>
           <div>
