@@ -444,7 +444,7 @@ async function loadPageContent(pageName) {
           <label class="block text-sm font-semibold mb-1" for="search-category">หมวดหมู่</label>
           <select id="search-category" class="w-full border rounded-lg px-3 py-2 mb-4">
             <option value="">ทั้งหมด</option>
-            <option>วิชาการ</option><option>กีฬา</option><option>บันเทิง</option><option>จิตอาสา</option><option>ออกกำลังกาย</option>
+            <option>วิชาการ</option><option>werewolf</option><option>UNO</option><option>เกมเศรษฐ๊</option><option>ตลกโยคะ</option><option>แมวระเบิด</option><option>XO</option><option>จิตอาสา</option><option>ออกกำลังกาย</option>
           </select>
           <button id="search-button" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg">ค้นหา</button>
         </div>
@@ -469,7 +469,7 @@ async function loadPageContent(pageName) {
             <label class="block text-sm font-semibold mb-1" for="activity-category">หมวดหมู่</label>
             <select id="activity-category" required class="w-full border rounded-lg px-3 py-2">
               <option value="">เลือกหมวดหมู่</option>
-              <option>วิชาการ</option><option>กีฬา</option><option>บันเทิง</option><option>จิตอาสา</option><option>ออกกำลังกาย</option>
+            <option>วิชาการ</option><option>werewolf</option><option>UNO</option><option>เกมเศรษฐ๊</option><option>ตลกโยคะ</option><option>แมวระเบิด</option><option>XO</option><option>จิตอาสา</option><option>ออกกำลังกาย</option>
             </select>
           </div>
           <div>
